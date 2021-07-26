@@ -1,6 +1,27 @@
 package enum_demo
 
 fun main() {
+    val accountObject = AccountVariety.CURRENT
+    // non exhaustive is when you wanna test some type of evaluation
+    when (accountObject) {
+        AccountVariety.SAVINGS -> println("This is savings type")
+    }
+    // Exhaustive when Statement else member becomes redundant
+
+    val message = when (accountObject) {
+        AccountVariety.FIXED -> {
+            "Fixed Member Access allowed"
+        }
+        AccountVariety.CURRENT -> {
+            "Current member access allowed"
+        }
+        AccountVariety.SAVINGS -> {
+            "Savings member access allowed"
+        }
+        else -> "Unknown member type"
+    }
+    println(message)
+
     //iterate over an enum class
     for (accountVariety in AccountVariety.values()) {
         // println("Different types of accounts: $accountVariety")
@@ -26,12 +47,22 @@ fun main() {
     println(accountType1.calculateDiscountPercent())
 
     //Kotlin Switch statement is know as a "When"
-    val user = User("Chinedu", "Ihedioha")
-    when (user.firstName) {
-        "Chinedu" -> {
-            println("This is Chinedu")
-        }
+    val user = User("Innocent", "Ihedioha")
+     if (user.firstName == "Innocent") {
+        println("This is Innocent")
+    } else {
+        println("This is not Chinedu")
     }
+    /*
+    when (user.firstName) {
+    "Chinedu" -> {
+    println("This is Chinedu")
+    }
+    else -> {
+    println("This is not Chinedu")
+    }
+    }
+    */
 
     val account = Account.getAccountTypeByName("Student")
     println("Account type is of: $account's")
@@ -62,6 +93,9 @@ enum class AccountVariety {
     },
     FIXED {
         override fun calculateDiscountPercent() = 40
+    },
+    PREMIER {
+        override fun calculateDiscountPercent() = 90
     };
 
     // how to implement abstract method in an enum class
