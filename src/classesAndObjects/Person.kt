@@ -19,7 +19,6 @@ class Chef(name: String, age: Int, favFood: String) : Person(name, age) {
         favoriteFood = food
         //printMyFavoriteFood()
     }
-
-
 }
+
 
