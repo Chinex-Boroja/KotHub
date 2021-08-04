@@ -1,0 +1,4 @@
+package KotlinBootCamp
+
+class customGetterSetter {
+}
