@@ -1,14 +1,25 @@
 package spices
 
+import KotlinBootCamp.Color
+
 fun main() {
-    println("this is the main function and the entry point of this program")
+    println("This is the main function and the entry point of this program")
+    val spiceCabinet = listOf(SpiceContainer(Curry("Yellow Curry", "mild")),
+        SpiceContainer(Curry("Red Curry","Medium")),
+        SpiceContainer(Curry("Green Curry", "Spicy")))
+
+    for (element in spiceCabinet) println(element.label)
 
 }
-abstract class Spice(val nameOfSpice: String,
+//Making Spice a sealed class helps keep all the spices together in one file.
+sealed class Spice(val nameOfSpice: String,
                      val spiciness: String = "mild", color: SpiceColor):
     SpiceColor by color {
 
     abstract fun prepareSpice()
+}
+data class SpiceContainer(var spice: Spice) {
+    val label = spice.nameOfSpice
 }
 class Curry(nameOfSpice: String, spiciness: String,
             color: SpiceColor = YellowSpiceColor) :
@@ -25,9 +36,9 @@ interface Grinder {
     fun grind()
 }
 interface SpiceColor {
-    var color: String
+    var color: Color
 
 }
 object YellowSpiceColor: SpiceColor {
-    override var color = "Yellow"
+    override var color = Color.YELLOW
 }
