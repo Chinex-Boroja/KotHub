@@ -63,6 +63,4 @@ fun main(args: Array<String>) {
     val (tool1, use1) = giveMeTool()
     println(tool1)
     println(use1)
-
-
 }
