@@ -32,7 +32,7 @@ class BookClass(var title: String, var author: String, var year: Int, var pages:
         return Triple(title, author, year )
     }
     fun canBorrow(hasBooks: Int): Boolean {
-        return (hasBooks < MAX_NUMBER_BOOKS)
+        return (hasBooks >= MAX_NUMBER_BOOKS)
     }
     fun printURL() {
         println(Constant.BASE_URL + title + ".html")
@@ -87,6 +87,19 @@ fun main(args: Array<String>) {
     println(tool1)
     println(use1)
 
+    val allBooks = mutableSetOf("Romeo and Juliet", "Much Ado about Nothing", "Hamlet")
+    val shakespeare = hashMapOf<Set<String>, String>(allBooks to "William Shakespeare")
+
+    println(shakespeare.any { it.key.contains("Hamlet") })
+
+    var moreBooks = hashMapOf<String, String>("Wilhem Tell" to "Schiller")
+    moreBooks.getOrPut("Jungle Book") {"Kiplin"}
+    moreBooks.getOrPut("Hamlet") {"Shakespeare"}
+    println(moreBooks)
+
+    book.printURL()
+
+    //Puppy and Play
     val puppy = Puppy()
     val book1 = BookClass("Oliver Twist", "Charles Dickens", 1873, 540)
 
