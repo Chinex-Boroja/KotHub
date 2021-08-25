@@ -2,9 +2,18 @@ package classesAndObjects
 
 fun main () {
     var lambo = Lambo()
+    var acura = Acura()
     var mayBack = MayBack("Black", 4, 2)
     var astonMartin = AstonMartin("silver", 4, 4)
 
+    driveMotor(lambo)
+    driveMotor(acura)
+    driveMotor(mayBack)
+    driveMotor(astonMartin)
+}
+
+fun driveMotor(motor: Motor) {
+    motor.drive()
 }
 
 abstract class Motor(var color: String, val numberOfWheels: Int, val numberOfDoors: Int) {
@@ -23,10 +32,14 @@ abstract class Motor(var color: String, val numberOfWheels: Int, val numberOfDoo
 abstract class TwoDoorCar( color: String, numberOfWheels: Int):
     Motor(color, numberOfWheels, 2) {
     abstract fun driveFast()
+
+    override fun drive() {
+        driveFast()
+    }
 }
 class Lambo: TwoDoorCar("Red", 4) {
     override fun drive() {
-        //just drive
+        println("drive fast")
     }
 
     override fun stop() {
@@ -37,10 +50,24 @@ class Lambo: TwoDoorCar("Red", 4) {
         //just drive fast
     }
 }
+class Acura(): TwoDoorCar("Green", 4){
+    override fun driveFast() {
+        println("Zoom")
+    }
+
+    override fun drive() {
+        println("zoom zoom")
+    }
+
+    override fun stop() {
+        TODO("Not yet implemented")
+    }
+
+}
 class AstonMartin(color: String, numberOfWheels: Int, numberOfDoors: Int):
 Motor(color, numberOfWheels, numberOfDoors) {
     override fun drive() {
-        //smoothRide
+        println("presidential")
     }
 
     override fun stop() {
@@ -50,7 +77,7 @@ Motor(color, numberOfWheels, numberOfDoors) {
 class MayBack(color: String, numberOfWheels: Int, numberOfDoors: Int):
         Motor(color, numberOfWheels, numberOfDoors) {
     override fun drive() {
-        //fastRide
+        println("fast ride")
     }
 
     override fun stop() {
