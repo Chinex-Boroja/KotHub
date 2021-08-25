@@ -1,10 +1,10 @@
 package classesAndObjects
 
 fun main () {
-    var lambo = Lambo()
-    var acura = Acura()
-    var mayBack = MayBack("Black", 4, 2)
-    var astonMartin = AstonMartin("silver", 4, 4)
+    val lambo = Lambo()
+    val acura = Acura()
+    val mayBack = MayBack("Black", 4, 2)
+    val astonMartin = AstonMartin("silver", 4, 4)
 
     driveMotor(lambo)
     driveMotor(acura)
